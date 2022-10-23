@@ -1,27 +1,50 @@
-#container {
-  text-align: center;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  ion-header {
+    height: 102px;
+    text-align: center center;
+  }
+  ion-toolbar {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  ion-label {
+    padding-left: 20px;
+  }
+  ion-list {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .col-left {
+    border-right: 1px;
+    border-bottom: 1px;
+    border-top: 0px;
+    border-left: 0px;
+    border-style: solid
+  }
+  .col-right {
+    border-top: 0px;
+    border-left: 0px;
+    border-bottom: 1px;
+    border-right: 0px;
+    border-style: solid;
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.editor-output {
+  height: 100%;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.editor {
+  height: calc(100vh - 180px);
 }
 
-#container a {
-  text-decoration: none;
+.output {
+  height: calc(100vh - 180px);
 }

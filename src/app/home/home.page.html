@@ -1,20 +1,59 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Online JS Compiler
+      JavaScript Online Compiler
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" scroll-y="false">
+  <ion-segment *ngIf="isMobile" [value]="segmentValue" (ionChange) = "getEditorOutputSegmentValue($event)">
+    <ion-segment-button [value]="javaScriptSegmentValue">
+      <ion-label>JavaScript</ion-label>
+    </ion-segment-button>
+    <ion-segment-button [value]="outputSegmentValue">
+      <ion-label>Output</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-grid>
+    <ion-row>
+      <ion-col class = "col-left">
+        <ion-list *ngIf="!isMobile">
+          <ion-item lines="none">
+            <ion-label>JavaScript</ion-label>
+            <ion-button color="primary">
+              <ion-icon name="caret-forward-sharp"></ion-icon>
+              <ion-text>Run</ion-text>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col class = "col-right">
+        <ion-list *ngIf="!isMobile">
+          <ion-item lines="none">
+            <ion-label>Output</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row class = "editor-output">
+      <ion-col *ngIf = "!isMobile || isEditorView" class = "col-left">
+        <div>
+          <div #editor class = "editor">
+          </div>
+        </div>
+      </ion-col>
+      <ion-col *ngIf = "!isMobile || !isEditorView" class = "col-right">
+        <div class = "output">
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-fab *ngIf="isMobile" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-button color="primary">
+      <ion-icon name="caret-forward-sharp"></ion-icon>
+      <ion-text>Run</ion-text>
+    </ion-button>
+  </ion-fab>
 </ion-content>
