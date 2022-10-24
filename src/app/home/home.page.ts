@@ -10,7 +10,7 @@ export class HomePage implements AfterViewInit, OnInit {
 
   @ViewChild("editor", { static: false }) private editor: ElementRef<HTMLInputElement> = {} as ElementRef;
 
-  private editorCode;
+  private editorCode = "console.log('Happy Coding');";
 
   public isMobile
 
@@ -76,7 +76,7 @@ export class HomePage implements AfterViewInit, OnInit {
       "https://unpkg.com/ace-builds@1.4.12/src-noconflict"
     );
     const aceEditor = ace.edit(this.editor.nativeElement);
-    aceEditor.session.setValue(!!this.editorCode ? this.editorCode : "console.log('Happy Coding');");
+    aceEditor.session.setValue(this.editorCode);
     aceEditor.setTheme("ace/theme/xcode");
     aceEditor.session.setMode("ace/mode/javascript");
     aceEditor.on("change", () => {
