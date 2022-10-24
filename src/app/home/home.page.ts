@@ -77,7 +77,7 @@ export class HomePage implements AfterViewInit, OnInit {
     );
     const aceEditor = ace.edit(this.editor.nativeElement);
     aceEditor.session.setValue(this.editorCode);
-    aceEditor.setTheme("ace/theme/xcode");
+    aceEditor.setTheme("ace/theme/chrome");
     aceEditor.session.setMode("ace/mode/javascript");
     aceEditor.on("change", () => {
       this.editorCode = aceEditor.getValue();
