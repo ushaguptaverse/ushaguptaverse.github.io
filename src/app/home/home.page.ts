@@ -1,6 +1,7 @@
 import { Component, HostListener, AfterViewInit, ElementRef, ViewChild, ChangeDetectorRef, OnInit } from '@angular/core';
 import * as ace from "ace-builds";
 
+let consoleOutput = []
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -21,6 +22,10 @@ export class HomePage implements AfterViewInit, OnInit {
 
   public segmentValue = this.javaScriptSegmentValue
 
+  public output
+
+  private console = window.console
+
   constructor(private changeDetector: ChangeDetectorRef) {
     this.isMobile = true
     this.isEditorView = true
@@ -35,6 +40,7 @@ export class HomePage implements AfterViewInit, OnInit {
       this.isMobile = false;
     }
 
+    this.initilizeConsole()
   }
 
   @HostListener('window:resize', ['$event'])
@@ -83,4 +89,58 @@ export class HomePage implements AfterViewInit, OnInit {
       this.editorCode = aceEditor.getValue();
     });
   }
+
+  public executeCode() {
+    consoleOutput = []
+    try {
+      eval(this.editorCode)
+    } catch (err) {
+      this.console.error(err)
+    }
+    this.output = consoleOutput
+  }
+
+  private initilizeConsole() {
+    this.console.log = function (obj) {
+      consoleOutput.push({
+        text: obj,
+        logType: 'log'
+      })
+    }
+
+    this.console.info = function (obj) {
+      consoleOutput.push({
+        text: obj,
+        logType: 'info'
+      })
+    }
+
+    this.console.warn = function (obj) {
+      consoleOutput.push({
+        text: obj,
+        logType: 'warn'
+      })
+    }
+
+    this.console.debug = function (obj) {
+      consoleOutput.push({
+        text: obj,
+        logType: 'debug'
+      })
+    }
+
+    this.console.error = function (obj) {
+      consoleOutput.push({
+        text: obj,
+        logType: 'error'
+      })
+    }
+  }
+
+  public evalMobile() {
+    this.isEditorView = false
+    this.segmentValue = this.outputSegmentValue
+    this.executeCode()
+  }
 }
+

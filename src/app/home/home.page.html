@@ -21,7 +21,7 @@
         <ion-list *ngIf="!isMobile">
           <ion-item lines="none">
             <ion-label>JavaScript</ion-label>
-            <ion-button color="primary">
+            <ion-button color="primary" (click)="executeCode()">
               <ion-icon name="caret-forward-sharp"></ion-icon>
               <ion-text>Run</ion-text>
             </ion-button>
@@ -45,13 +45,30 @@
       </ion-col>
       <ion-col *ngIf="!isMobile || !isEditorView" class="col-right">
         <div class="output">
+          <div *ngFor="let line of output">
+            <p *ngIf="line.logType === 'log'" class="log-console">
+              {{line.text}}
+            </p>
+            <p *ngIf="line.logType === 'warn'" class="warn-console">
+              {{line.text}}
+            </p>
+            <p *ngIf="line.logType === 'info'" class="info-console">
+              {{line.text}}
+            </p>
+            <p *ngIf="line.logType === 'debug'" class="debug-console">
+              {{line.text}}
+            </p>
+            <p *ngIf="line.logType === 'error'" class="error-console">
+              {{line.text}}
+            </p>
+          </div>
         </div>
       </ion-col>
     </ion-row>
   </ion-grid>
 
   <ion-fab *ngIf="isMobile" vertical="bottom" horizontal="end" slot="fixed">
-    <ion-button color="primary">
+    <ion-button color="primary" (click)="evalMobile()">
       <ion-icon name="caret-forward-sharp"></ion-icon>
       <ion-text>Run</ion-text>
     </ion-button>
