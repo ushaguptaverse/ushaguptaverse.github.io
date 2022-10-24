@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" scroll-y="false">
-  <ion-segment *ngIf="isMobile" [value]="segmentValue" (ionChange) = "getEditorOutputSegmentValue($event)">
+  <ion-segment *ngIf="isMobile" [value]="segmentValue" (ionChange)="getEditorOutputSegmentValue($event)">
     <ion-segment-button [value]="javaScriptSegmentValue">
       <ion-label>JavaScript</ion-label>
     </ion-segment-button>
@@ -17,7 +17,7 @@
   </ion-segment>
   <ion-grid>
     <ion-row>
-      <ion-col class = "col-left">
+      <ion-col class="col-left">
         <ion-list *ngIf="!isMobile">
           <ion-item lines="none">
             <ion-label>JavaScript</ion-label>
@@ -28,7 +28,7 @@
           </ion-item>
         </ion-list>
       </ion-col>
-      <ion-col class = "col-right">
+      <ion-col class="col-right">
         <ion-list *ngIf="!isMobile">
           <ion-item lines="none">
             <ion-label>Output</ion-label>
@@ -36,15 +36,15 @@
         </ion-list>
       </ion-col>
     </ion-row>
-    <ion-row class = "editor-output">
-      <ion-col *ngIf = "!isMobile || isEditorView" class = "col-left">
+    <ion-row class="editor-output">
+      <ion-col *ngIf="!isMobile || isEditorView" class="col-left">
         <div>
-          <div #editor class = "editor">
+          <div #editor class="editor">
           </div>
         </div>
       </ion-col>
-      <ion-col *ngIf = "!isMobile || !isEditorView" class = "col-right">
-        <div class = "output">
+      <ion-col *ngIf="!isMobile || !isEditorView" class="col-right">
+        <div class="output">
         </div>
       </ion-col>
     </ion-row>

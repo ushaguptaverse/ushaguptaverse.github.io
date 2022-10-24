@@ -1,11 +1,10 @@
-
-
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   ion-header {
     height: 102px;
     text-align: center center;
   }
+
   ion-toolbar {
     margin: 0;
     position: absolute;
@@ -13,9 +12,11 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
+
   ion-label {
     padding-left: 20px;
   }
+
   ion-list {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -28,6 +29,7 @@
     border-left: 0px;
     border-style: solid
   }
+
   .col-right {
     border-top: 0px;
     border-left: 0px;
@@ -35,16 +37,27 @@
     border-right: 0px;
     border-style: solid;
   }
+
+  .editor {
+    height: calc(100vh - 180px);
+  }
+
+  .output {
+    height: calc(100vh - 180px);
+  }
 }
 
 .editor-output {
   height: 100%;
 }
 
-.editor {
-  height: calc(100vh - 180px);
-}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+  .editor {
+    height: calc(100vh - 140px);
+  }
 
-.output {
-  height: calc(100vh - 180px);
+  .output {
+    height: calc(100vh - 140px);
+  }
 }
