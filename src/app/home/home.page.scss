@@ -43,9 +43,11 @@
   }
 
   .output {
-    height: calc(100vh - 180px);
+    height: calc((100vh - 180px)/2);
     background-color: white;
     overflow-y: scroll;
+    border: 1px;
+    border-style: solid;
   }
 }
 
