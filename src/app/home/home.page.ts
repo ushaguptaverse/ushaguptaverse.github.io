@@ -73,6 +73,13 @@ export class HomePage implements AfterViewInit, OnInit {
 
   ngAfterViewInit(): void {
     this.loadEditor()
+    setTimeout(()=>{
+      try{
+        (window['adsbygoogle'] = window['adsbygoogle'] || []).push({});
+      }catch(e){
+        console.error("error");
+      }
+    },5000);
   }
 
   private loadEditor() {
