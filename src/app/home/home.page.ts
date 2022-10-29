@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, AfterViewInit, ElementRef, ViewChild, ChangeDetectorRef, OnInit } from '@angular/core';
 import * as ace from "ace-builds";
 
@@ -23,10 +24,11 @@ export class HomePage implements AfterViewInit, OnInit {
   public segmentValue = this.javaScriptSegmentValue
 
   public output
+  public count
 
   private console = window.console
 
-  constructor(private changeDetector: ChangeDetectorRef) {
+  constructor(private changeDetector: ChangeDetectorRef, private http: HttpClient) {
     this.isMobile = true
     this.isEditorView = true
   }
@@ -41,6 +43,10 @@ export class HomePage implements AfterViewInit, OnInit {
     }
 
     this.initilizeConsole()
+
+    // this.http.get<any>('http://localhost:3000/getCount').subscribe(data => {
+    //         this.count = data.count;
+    //     })
   }
 
   @HostListener('window:resize', ['$event'])
