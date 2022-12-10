@@ -1,0 +1,3 @@
+constants = {
+    defaultExtension: '1'
+}
