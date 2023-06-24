@@ -1,7 +1,0 @@
-{
-  "name": "online-tools",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
