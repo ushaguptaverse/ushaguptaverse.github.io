@@ -224,7 +224,7 @@
     content: "";
     width: calc(100% + 80px);
     height: 2px;
-    top: 4px;
+    top: 8px;
     left: -40px;
     background: var(--primary);
     z-index: -1;
@@ -235,7 +235,7 @@
     content: "";
     width: calc(100% + 120px);
     height: 2px;
-    bottom: 5px;
+    bottom: 8px;
     left: -60px;
     background: var(--primary);
     z-index: -1;
@@ -368,10 +368,6 @@
 
 
 /*** Footer ***/
-.footer {
-    position: fixed;
-    bottom: 0;
-}
 .footer .btn.btn-social {
     margin-right: 5px;
     width: 35px;
